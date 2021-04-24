@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { Button, Typography } from 'antd';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1> Dimetrio-English </h1>
-         <button>Add some word</button>
-      </header>
-    </div>
-  );
-}
+const { Title } = Typography;
+
+const App: FC = () => (
+  <div className="App">
+		<Title>Shiny-Lang</Title>
+    <Button type="primary">Button</Button>
+  </div>
+);
 
 export default App;
