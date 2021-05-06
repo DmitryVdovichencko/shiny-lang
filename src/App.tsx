@@ -16,6 +16,7 @@ import {
 	CssBaseline
 } from "@material-ui/core";
 import { AccountCircle } from "@material-ui/icons";
+
 const App: FC = () => (
   <div className="App">
     <AppBar position="sticky">
@@ -40,7 +41,7 @@ const App: FC = () => (
     <Container component="main" maxWidth="xs">
 			<CssBaseline />
       <Grid container direction="column" justify="center" alignItems="center">
-        <Paper variant="outlined">
+        <Paper variant="elevation" style={{boxShadow:`0px 38px 76px 0px rgba(11,29,66,0.1)`, borderRadius:'16px'}}>
 					<Box p={2}>
 					<Grid container direction="column" spacing={2}>
 					<Grid item>
