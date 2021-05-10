@@ -16,7 +16,7 @@ import {
 	CssBaseline
 } from "@material-ui/core";
 import { AccountCircle } from "@material-ui/icons";
-
+import SignInForm from "./components/SignInForm/";
 const App: FC = () => (
   <div className="App">
     <AppBar position="sticky">
@@ -38,53 +38,10 @@ const App: FC = () => (
         </Grid>
       </Grid>
     </AppBar>
-    <Container component="main" maxWidth="xs">
-			<CssBaseline />
-      <Grid container direction="column" justify="center" alignItems="center">
-        <Paper variant="elevation" style={{boxShadow:`0px 38px 76px 0px rgba(11,29,66,0.1)`, borderRadius:'16px'}}>
-					<Box p={2}>
-					<Grid container direction="column" spacing={2}>
-					<Grid item>
-          <FormControl>
-            <InputLabel htmlFor="input-with-icon-adornment">
-              With a start adornment
-            </InputLabel>
-            <Input
-              id="input-with-icon-adornment"
-              startAdornment={
-                <InputAdornment position="start">
-                  <AccountCircle />
-                </InputAdornment>
-              }
-            />
-          </FormControl>
-					</Grid>
-					<Grid item>
-					<FormControl>
-            <InputLabel htmlFor="input-with-icon-adornment">
-              With a start adornment
-            </InputLabel>
-            <Input
-              id="input-with-icon-adornment"
-							type="password"
-              startAdornment={
-                <InputAdornment position="start">
-                  <AccountCircle />
-                </InputAdornment>
-              }
-            />
-          </FormControl>
-					</Grid>
-					<Grid item>
-          <Button variant="contained" color="primary">
-            SignIn
-          </Button>
-					</Grid>
-					</Grid>
-					</Box>
-        </Paper>
-      </Grid>
-    </Container>
+		<Container component="main" maxWidth="xs" style={{minHeight:'90vh'}}>
+<CssBaseline />
+<SignInForm />
+</Container>
   </div>
 );
 
