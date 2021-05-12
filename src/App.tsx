@@ -11,37 +11,32 @@ import {
   InputLabel,
   InputAdornment,
   Input,
-	Container,
-	IconButton,
-	CssBaseline
+  Container,
+  IconButton,
+  CssBaseline,
 } from "@material-ui/core";
 import { AccountCircle } from "@material-ui/icons";
 import SignInForm from "./components/SignInForm/";
+import Layout from "./components/Layout/";
+import Home from "./components/Home/";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { AuthRoutes } from "./components/AuthRoute/routes";
+import { userRoles } from "./components/AuthRoute/userRoles";
+import AuthRoute from "./components/AuthRoute";
+import Profile from "./components/Profile";
 const App: FC = () => (
   <div className="App">
-    <AppBar position="sticky">
-      <Grid container direction="row">
-        <Grid item container direction="row" justify="center" md={8}>
-          <Typography variant="h6" noWrap>
-            Shiny Lang
-          </Typography>
-        </Grid>
-        <Grid container direction="row" item md={4} justify="flex-end">
-				<IconButton
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
-        </Grid>
-      </Grid>
-    </AppBar>
-		<Container component="main" maxWidth="xs" style={{minHeight:'90vh'}}>
-<CssBaseline />
-<SignInForm />
-</Container>
+    <Layout>
+      <BrowserRouter>
+        <Route path="/" exact component={Home} />
+        <Route path="/signin" exact component={SignInForm} />
+        <AuthRoute
+          path={AuthRoutes.account}
+          Component={Profile}
+          requiredRoles={userRoles.admins}
+        />
+      </BrowserRouter>
+    </Layout>
   </div>
 );
 
