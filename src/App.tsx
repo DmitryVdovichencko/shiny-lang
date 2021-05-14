@@ -24,16 +24,22 @@ import { AuthRoutes } from "./components/AuthRoute/routes";
 import { userRoles } from "./components/AuthRoute/userRoles";
 import AuthRoute from "./components/AuthRoute";
 import Profile from "./components/Profile";
+import AccessDenied from "./components/AccessDenied";
 const App: FC = () => (
   <div className="App">
     <Layout>
       <BrowserRouter>
         <Route path="/" exact component={Home} />
         <Route path="/signin" exact component={SignInForm} />
-        <AuthRoute
+				<AuthRoute
           path={AuthRoutes.account}
           Component={Profile}
           requiredRoles={userRoles.admins}
+        />
+        <AuthRoute
+          path={AuthRoutes.accessDenied}
+          Component={AccessDenied}
+          requiredRoles={userRoles.all}
         />
       </BrowserRouter>
     </Layout>

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { RouteComponentProps, Route,Redirect } from 'react-router-dom';
-import { NonAuthRoutes } from './routes';
+import { NonAuthRoutes, AuthRoutes } from './routes';
 import { UserRoles } from './userRoles'
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
 
 const AuthRoute = ({ Component, path, exact = false, requiredRoles }: Props): JSX.Element => {
 	const isAuthed = true;
-	const userRole = UserRoles.nonAdmin;
+	const userRole = UserRoles.admin;
 	const userHasRequiredRole = requiredRoles.includes(userRole);
 	const message = userHasRequiredRole ? 'Please log in to view this page' : "You can't be here!"
 	return (
@@ -25,8 +25,8 @@ const AuthRoute = ({ Component, path, exact = false, requiredRoles }: Props): JS
 				) : (
 					<Redirect
 						to={{
-							pathname: userHasRequiredRole ? 
-							NonAuthRoutes.signIn : 
+							pathname: !userHasRequiredRole && isAuthed ? 
+							AuthRoutes.accessDenied : 
 							NonAuthRoutes.signIn,
 							state: { 
 								message,

@@ -1,5 +1,6 @@
 export enum AuthRoutes {
-	account = '/account'
+	account = '/account',
+	accessDenied ='/accessDenied'
 }
 
 export enum NonAuthRoutes {
